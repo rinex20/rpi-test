@@ -1,0 +1,13 @@
+[Unit]
+Description=Makes an interface run in promiscuous mode at boot
+After=Network-online.target
+
+[Service]
+Type=oneshot
+ExecStart=/usr/sbin/ip link set dev ens9 promisc on
+ExecStart=/usr/sbin/ip link set dev ens12 promisc on
+TimeoutStartSec=0
+RemainAfterExit=yes
+
+[Install]
+WantedBy=default.target
