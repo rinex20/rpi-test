@@ -4,8 +4,9 @@ After=Network-online.target
 
 [Service]
 Type=oneshot
-ExecStart=/usr/sbin/ip link set dev ens9 promisc on
-ExecStart=/usr/sbin/ip link set dev ens12 promisc on
+ExecStart=/docker/etc/network-init.sh
+#ExecStart=/usr/sbin/ip link set dev ens9 promisc on
+#ExecStart=/usr/sbin/ip link set dev ens12 promisc on
 TimeoutStartSec=0
 RemainAfterExit=yes
 
