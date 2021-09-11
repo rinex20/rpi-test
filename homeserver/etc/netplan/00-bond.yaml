@@ -1,0 +1,27 @@
+# This is the network config written by 'subiquity'
+network:
+  ethernets:
+    enp3s0: {}
+    enp4s0: {}
+  renderer: networkd
+  bonds:
+    bond0:
+      interfaces:
+        - enp3s0
+        - enp4s0
+      parameters:
+        mode: balance-alb #active-backup
+        mii-monitor-interval: 100
+                #lacp-rate: fast
+                #transmit-hash-policy: layer-3-and-4
+  bridges:
+    eth0_op:
+      dhcp4: false
+      dhcp6: false
+      addresses: [192.168.90.10/24]
+      gateway4: 192.168.90.3
+      nameservers:
+        addresses: [127.0.0.1, 8.8.8.8]
+      interfaces:
+        - bond0
+  version: 2
